@@ -1,0 +1,5 @@
+node_modules
+app/dist.js
+dist
+.idea
+.DS_Store

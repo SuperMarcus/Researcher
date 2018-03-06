@@ -1,0 +1,48 @@
+{
+  "name": "Researcher",
+  "version": "1.0.0",
+  "description": "A graphical wrapper for pgoogle",
+  "main": "index.js",
+  "repository": "https://github.com/github:SuperMarcus/Researcher.git",
+  "author": "Marcus Zhou <other.marcus@icloud.com> (https://marcuszhou.com)",
+  "license": "GPL-3.0",
+  "productName": "Researcher",
+  "keywords": [
+    "electron",
+    "google",
+    "essay",
+    "essay-generator",
+    "paragraph-generator",
+    "generator",
+    "homework",
+    "homework-helper"
+  ],
+  "dependencies": {
+    "material-ui": "^1.0.0-beta.35",
+    "pgoogle": "^1.0.6",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "electron": "^1.8.2",
+    "@babel/cli": "^7.0.0-beta.40",
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "@babel/preset-react": "^7.0.0-beta.40",
+    "babel-loader": "^8.0.0-beta.2",
+    "electron-devtools-installer": "^2.2.3",
+    "electron-packager": "^11.1.0",
+    "webpack": "^4.0.1",
+    "webpack-cli": "^2.0.9"
+  },
+  "scripts": {
+    "build": "rm -f app/dist.js && webpack --mode production",
+    "build:dev": "rm -f app/dist.js && webpack --mode development",
+    "start": "yarn build:dev && NODE_DEBUG=* NODE_ENV=development electron .",
+    "pack:mac": "electron-packager . --package-manager yarn --platform darwin --app-bundle-id com.marcuszhou.researcher --out dist --prune=true --icon icons/icon.icns --asar --overwrite",
+    "pack:win": "electron-packager . --package-manager yarn --platform win32 --arch=ia32 --out dist --prune=true --icon icons/icon.ico --asar --overwrite",
+    "pack": "yarn build && yarn pack:mac && yarn pack:win"
+  }
+}
