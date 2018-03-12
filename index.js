@@ -47,6 +47,9 @@ const onParams = async (event, args) => {
     const { sender } = event;
     sender.send("display", "progress");
 
+    //Handler for finish
+    ipcMain.on("finish", () => sender.send("display", "start"));
+
     let _stagers = {
         async onStart(stage){
             sender.send("progress", {

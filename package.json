@@ -42,7 +42,8 @@
     "build:dev": "rm -f app/dist.js && webpack --mode development",
     "start": "yarn build:dev && NODE_DEBUG=* NODE_ENV=development electron .",
     "pack:mac": "electron-packager . --package-manager yarn --platform darwin --app-bundle-id com.marcuszhou.researcher --out dist --prune=true --icon icons/icon.icns --asar --overwrite",
-    "pack:win": "electron-packager . --package-manager yarn --platform win32 --arch=ia32 --out dist --prune=true --icon icons/icon.ico --asar --overwrite",
-    "pack": "yarn build && yarn pack:mac && yarn pack:win"
+    "pack:win32": "electron-packager . --package-manager yarn --platform win32 --arch=ia32 --out dist --prune=true --icon icons/icon.ico --asar --overwrite",
+    "pack:win64": "electron-packager . --package-manager yarn --platform win32 --arch=x64 --out dist --prune=true --icon icons/icon.ico --asar --overwrite",
+    "pack:all": "yarn build && yarn pack:mac && yarn pack:win32 && yarn pack:win64"
   }
 }

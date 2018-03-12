@@ -120,10 +120,11 @@ class Progress extends React.Component {
 
     componentDidMount(){
         if(!!this._listener) ipcRenderer.removeListener("progress", this._listener);
-        this._listener = ipcRenderer.on("progress", (event, args) => {
+        this._listener = (event, args) => {
             console.log(args);
             this.setState(args)
-        });
+        };
+        ipcRenderer.on("progress", this._listener);
     }
 
     componentWillUnmount(){
@@ -227,6 +228,7 @@ class Progress extends React.Component {
                 <Paper className={classes.completeContainer}>
                     <p className={`${classes.generatedOutputP} select-region`}>{this.state.sentences.join(" ")}</p>
                 </Paper>
+                <Button onClick={() => {ipcRenderer.send("finish")}}>Home</Button>
             </div>
         );
     }
